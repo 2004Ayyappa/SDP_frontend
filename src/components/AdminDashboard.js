@@ -24,6 +24,16 @@ const AdminDashboard = () => {
   const [activeMenu, setActiveMenu] = useState('manageEvents');
 
   useEffect(() => {
+    console.log('Location state:', state);
+    if (!state?.admin) {
+      toast.error('You must be logged in to access this page.');
+      navigate('/');  
+    } else {
+      setAdmin(state.admin);
+    }
+  }, [state, navigate]);
+
+  useEffect(() => {
     if (admin) {
       switch(activeMenu) {
         case 'manageEvents':

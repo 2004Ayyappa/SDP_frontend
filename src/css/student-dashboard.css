@@ -76,7 +76,7 @@
   padding: 15px;
   margin: 10px;
   border-radius: 5px;
-  width: 200px;
+  width: 435px;
 }
 
 .event-image {
@@ -90,6 +90,7 @@
   margin-top: 10px;
   border: none;
   cursor: pointer;
+  border-radius: 15px;
 }
 
 .register-button {

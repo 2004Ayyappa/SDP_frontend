@@ -9,20 +9,20 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setLoading(true);
     try {
       const response = await fetch('https://student-extracurricular-activities.up.railway.app/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       });
-
+      setLoading(false);
       const data = await response.text(); // Get the response as plain text
 
       if (response.ok && data === "200") {
@@ -99,7 +99,7 @@ const AdminLogin = () => {
                   required
                 />
               </div>
-              <button type="submit" className="login-button">Login</button>
+              <button type="submit" className="login-button" disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button>
             </form>
           </div>
         </div>
